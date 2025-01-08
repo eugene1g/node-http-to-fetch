@@ -26,7 +26,7 @@ s.listen(8989);
 
 
 # Gotchas
-* Must use Node.js `^18.13.0 || ^19.3.0` because of important changes [ref1](https://github.com/nodejs/node/pull/45672), [ref2](https://github.com/nodejs/node/pull/45642), [ref3](https://github.com/nodejs/node/issues/42694), [ref4](https://github.com/nodejs/node/issues/44188)
+* Must use Node.js `^18.13.0 || ^19.3.0 || >=20.0` because of important changes [ref1](https://github.com/nodejs/node/pull/45672), [ref2](https://github.com/nodejs/node/pull/45642), [ref3](https://github.com/nodejs/node/issues/42694), [ref4](https://github.com/nodejs/node/issues/44188)
 * In case there are multiple listeners installed, the first one to return a `Response` will "win" - that `Response` will be sent to the user. Note that this does not mean the first handler _mounted_ or the first one to be _called_ - some handlers can be slower than others. The first one to finish executing and returning a Response will win, regardless of when it was mounted.
 
 ## TODOs

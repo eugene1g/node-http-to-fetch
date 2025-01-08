@@ -3,16 +3,17 @@ on: [push, pull_request]
 permissions: { contents: read, packages: read }
 
 jobs:
-  testAndBuild:
+  testOldNode:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     strategy:
       fail-fast: false
       matrix:
         node-version:
-          - "22.6" # supports --experimental-strip-types
-          - "22.x" # latest LTS
-          - "23.x" # Latest current
+          - "18.13" # first version we support
+          - "20.0" # earliest in 20x LTS
+          - "20.x" # latest in 20x LTS
+          - "22.0" # before native TS support
 
     steps:
       - uses: actions/checkout@v4
@@ -21,10 +22,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: ⏬ Install dependencies
-        run: yarn install
+        run: yarn install && yarn add -D tsx
 
       - name: ✅ Run tests
-        run: yarn test >> $GITHUB_STEP_SUMMARY
+        run: node --loader=tsx/esm --test __tests__/**/*.test.ts >> $GITHUB_STEP_SUMMARY
 
       - name: 🏗 Run build
         run: yarn build
