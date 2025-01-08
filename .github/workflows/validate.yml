@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version:
-          - "22.6" # supports --experimental-strip-types
+          - "22.6" # earliest in LTS that natively supports --experimental-strip-types
           - "22.x" # latest LTS
           - "23.x" # Latest current
 

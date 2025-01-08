@@ -1,17 +1,17 @@
-name: Validate code
+name: Validate Old Node
 on: [push, pull_request]
 permissions: { contents: read, packages: read }
 
 jobs:
   testOldNode:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 2
     strategy:
       fail-fast: false
       matrix:
         node-version:
-          - "18.13" # first version we support
-          - "20.0" # earliest in 20x LTS
+          - "18.19" # first version we support that works with --import=tsx/esm
+          - "20.6" # earliest in 20x LTS that support importing .ts
           - "20.x" # latest in 20x LTS
           - "22.0" # before native TS support
 
@@ -25,7 +25,7 @@ jobs:
         run: yarn install && yarn add -D tsx
 
       - name: ✅ Run tests
-        run: node --loader=tsx/esm --test __tests__/**/*.test.ts >> $GITHUB_STEP_SUMMARY
+        run: node --import=tsx/esm --test __tests__/**/*.test.ts
 
       - name: 🏗 Run build
         run: yarn build
