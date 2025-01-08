@@ -1,0 +1,22 @@
+{
+  "include": ["src", "__tests__"],
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2022",
+    "declaration": true,
+    "noErrorTruncation": true,
+    "noEmitOnError": true,
+
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "rewriteRelativeImportExtensions": true,
+
+    "outDir": "./dist",
+    "declarationDir": "./dist/_types",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "inlineSources": true,
+    "inlineSourceMap": true
+  }
+}

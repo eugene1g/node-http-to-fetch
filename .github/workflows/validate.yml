@@ -1,0 +1,30 @@
+name: Validate code
+on: [push, pull_request]
+permissions: { contents: read, packages: read }
+
+jobs:
+  testAndBuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    strategy:
+      matrix:
+        node-version: ["20.x", "22.x", "23.x"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: ⏬ Install dependencies
+        run: yarn install
+
+      - name: ✅ Run tests
+        run: yarn test >> $GITHUB_STEP_SUMMARY
+
+      - name: 🏗 Run build
+        run: yarn build
+
+      - name: 🔦 Run lint
+        run: yarn lint
+
+
