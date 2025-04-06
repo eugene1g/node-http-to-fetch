@@ -24,7 +24,7 @@ jobs:
         run: yarn install
 
       - name: ✅ Run tests
-        run: yarn tess
+        run: yarn test
 
       - name: 🏗 Run build
         run: yarn build

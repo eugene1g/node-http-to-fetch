@@ -10,10 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version:
-          - "18.19" # first version we support that works with --import=tsx/esm
-          - "20.6" # earliest in 20x LTS that support importing .ts
-          - "20.x" # latest in 20x LTS
-          - "22.0" # before native TS support
+          - "23.0" # before native TS support
 
     steps:
       - uses: actions/checkout@v4
@@ -22,10 +19,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: ⏬ Install dependencies
-        run: yarn install && yarn add -D tsx
+        run: yarn install
 
       - name: ✅ Run tests
-        run: node --import=tsx/esm --test './__tests__/**/*.test.ts'
+        run: yarn test
 
       - name: 🏗 Run build
         run: yarn build

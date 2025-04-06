@@ -7,13 +7,12 @@
     "@types/ws": "^8.18.1",
     "got": "^14.4.7",
     "prettier": "^3.5.3",
-    "tsx": "^4.19.3",
     "typescript": "^5.8.3",
     "ws": "^8.18.1"
   },
   "scripts": {
     "test": "yarn test:path --test-reporter=spec __tests__/**/*.test.ts",
-    "test:path": "node --experimental-strip-types --experimental-test-coverage --test-coverage-include='src/**/*.ts' --test-coverage-exclude='**/__tests__/*' --no-warnings --test",
+    "test:path": "node --experimental-test-coverage --test-coverage-include='src/**/*.ts' --test-coverage-exclude='**/__tests__/*' --no-warnings --test",
     "build": "rm -rf dist && tsc -p tsconfig.dist.json",
     "format": "yarn format:paths '{src,__tests__}/**/*.ts' '*.{js,json,yml,cjs}' '.github/**/*.{json5,yml}'",
     "format:paths": "./node_modules/.bin/prettier --ignore-unknown --log-level=warn --write"
@@ -33,7 +32,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "engines": {
-    "node": "^18.13.0 || ^19.3.0 || >=20"
+    "node": ">=22"
   },
   "repository": "https://github.com/firstassethr/node-http-to-fetch",
   "types": "dist/_types/main.d.ts",
