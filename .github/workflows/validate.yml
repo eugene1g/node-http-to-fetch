@@ -4,7 +4,7 @@ permissions: { contents: read, packages: read }
 
 jobs:
   testAndBuild:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 2
     strategy:
       fail-fast: false
@@ -24,7 +24,7 @@ jobs:
         run: yarn install
 
       - name: ✅ Run tests
-        run: yarn test >> $GITHUB_STEP_SUMMARY
+        run: yarn tess
 
       - name: 🏗 Run build
         run: yarn build
