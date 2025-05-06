@@ -37,6 +37,6 @@
   "repository": "https://github.com/firstassethr/node-http-to-fetch",
   "types": "dist/_types/main.d.ts",
   "type": "module",
-  "packageManager": "yarn@4.8.1",
+  "packageManager": "yarn@4.9.1",
   "license": "UNLICENCED"
 }
